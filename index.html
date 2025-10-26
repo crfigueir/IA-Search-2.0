@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defenda-se da IA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Defenda-se da IA</h1>
+      <p>Aprenda a identificar, compreender e se proteger das tecnologias de Inteligência Artificial</p>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/711/711284.png" alt="Ícone chat" class="icon">
+        <h2>Teste do Chat</h2>
+        <p>Experimente nossa ferramenta interativa para testar e identificar diferentes tipos de IA conversacional. Aprenda a reconhecer padrões e comportamentos típicos de sistemas automatizados.</p>
+        <button id="startQuiz">Iniciar Teste Interativo</button>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Ícone portal" class="icon">
+        <h2>Portal Educativo</h2>
+        <p>Acesse nosso centro de conhecimento com artigos, guias práticos, vídeos educativos e recursos para entender melhor o mundo da Inteligência Artificial e suas implicações.</p>
+        <button id="openPortal">Explorar Conteúdo</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Botão para iniciar o quiz
+    document.getElementById('startQuiz').addEventListener('click', function() {
+      window.location.href = 'quiz.html'; // Altere para o nome correto do arquivo do seu quiz
+    });
+
+    // Botão para abrir o portal educativo
+    document.getElementById('openPortal').addEventListener('click', function() {
+      window.location.href = 'portal.html'; // Altere para o nome correto do arquivo do portal
+    });
+  </script>
+</body>
+</html>
