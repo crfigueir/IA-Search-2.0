@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Educativo - Defenda-se da IA</title>
+<style>
+:root {
+  --primary-color: #5f5afc;
+  --primary-hover: #4438f7;
+  --bg-color: #5f5afc;
+  --card-bg: #ffffff;
+  --text-color: #333;
+}
+
+/* GERAIS */
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  color: white;
+  overflow-x: hidden;
+}
+
+header {
+  background: var(--primary-color);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* CONTEÚDO PRINCIPAL */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2em;
+  margin: 40px 0 20px;
+  font-weight: 700;
+}
+
+/* GRIDS */
+#cards-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Ajuste específico para os vídeos */
+#cards-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+#cards-bottom .card {
+  flex: 0 1 350px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* CARD */
+.card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+.card h3 {
+  color: var(--primary-color);
+}
+
+/* MODAL (POP-UP) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.modal-content {
+  background: white;
+  color: var(--text-color);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  text-align: justify;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5em;
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* MINIATURAS DE VÍDEO */
+#cards-bottom img {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* BOTÃO VOLTAR */
+#voltar-container {
+  text-align: center;
+  margin: 60px 0 40px;
+}
+#btnVoltar {
+  background: white;
+  color: var(--primary-color);
+  padding: 15px 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  transition: background 0.2s, transform 0.2s;
+}
+#btnVoltar:hover {
+  background: #eee;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* RODAPÉ */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #333;
+  color: white;
+  margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Portal Educativo</h1>
+  <p>Explore artigos, vídeos e guias para entender melhor a Inteligência Artificial</p>
+</header>
+
+<main>
+  <h2 class="section-title" id="artigos-guias">📚 Artigos e Guias</h2>
+  <div id="cards-top">
+    <div class="card" data-modal="modal1"><h3>O que é Inteligência Artificial?</h3></div>
+    <div class="card" data-modal="modal2"><h3>Riscos e cuidados</h3></div>
+    <div class="card" data-modal="modal3"><h3>Como reconhecer IA em conversas online</h3></div>
+  </div>
+
+  <h2 class="section-title" id="videos">📺 Vídeos e Tutoriais</h2>
+  <div id="cards-bottom">
+    <div class="card" data-category="video">
+      <a href="https://www.youtube.com/watch?v=vqx5DiIuVUQ" target="_blank">
+        <img src="https://img.youtube.com/vi/vqx5DiIuVUQ/hqdefault.jpg" alt="Miniatura do vídeo">
+      </a>
+    </div>
+    <div class="card" data-category="video">
+      <a href="https://www.youtube.com/watch?v=EoicdbDkFkg" target="_blank">
+        <img src="https://img.youtube.com/vi/EoicdbDkFkg/hqdefault.jpg" alt="Miniatura do vídeo">
+      </a>
+    </div>
+    <div class="card" data-category="video">
+      <a href="https://www.youtube.com/watch?v=MLJCNQmNUpk" target="_blank">
+        <img src="https://img.youtube.com/vi/MLJCNQmNUpk/hqdefault.jpg" alt="Miniatura do vídeo">
+      </a>
+    </div>
+    <div class="card" data-category="video">
+      <a href="https://www.youtube.com/watch?v=KKIE6TXDDUw" target="_blank">
+        <img src="https://img.youtube.com/vi/KKIE6TXDDUw/hqdefault.jpg" alt="Miniatura do vídeo">
+      </a>
+    </div>
+  </div>
+</main>
+
+<div id="voltar-container">
+  <button id="btnVoltar" onclick="window.location.href='index.html'">
+    ⬅️ Voltar para a Tela Principal
+  </button>
+</div>
+
+<footer>
+  <p>&copy; 2025 Defenda-se da IA. Todos os direitos reservados.</p>
+</footer>
+
+<!-- MODAIS -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <button class="close-btn">&times;</button>
+    <h2>O que é Inteligência Artificial?</h2>
+    <p>A Inteligência Artificial (IA) é uma área da computação que busca criar sistemas capazes de realizar tarefas que exigem inteligência humana — como reconhecer imagens, compreender fala e tomar decisões.</p>
+    <p>A IA aprende com dados e melhora com o tempo. Ela está presente em recomendações de vídeos, diagnósticos médicos, assistentes virtuais e muito mais.</p>
+    <p>Mas, com as vantagens, surgem desafios: o uso indevido da IA para manipulação de informações e a invasão de privacidade são exemplos de riscos que exigem atenção e ética no uso dessas tecnologias.</p>
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <button class="close-btn">&times;</button>
+    <h2>Riscos e cuidados</h2>
+    <p>Com o avanço da IA, surgem também ameaças como os deepfakes — vídeos ou áudios falsos que imitam pessoas reais com alta precisão. Golpistas podem usar essas ferramentas para enganar vítimas, roubar dados ou espalhar desinformação.</p>
+    <p>Outro ponto crítico é a coleta de informações pessoais. Muitos aplicativos baseados em IA analisam seu comportamento e preferências.</p>
+    <p>Para se proteger, desconfie de mensagens e vídeos suspeitos, verifique fontes e nunca compartilhe dados pessoais sem certeza sobre o destino dessas informações.</p>
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <button class="close-btn">&times;</button>
+    <h2>Como reconhecer IA em conversas online</h2>
+    <p>Respostas de IA tendem a ser rápidas, coerentes e gramaticalmente corretas, mas podem soar impessoais. Costumam evitar contradições e manter um tom neutro, mesmo diante de temas emocionais.</p>
+    <p>Se quiser testar, faça perguntas pessoais, regionais ou com duplo sentido — a IA normalmente falha em respostas espontâneas ou emocionalmente autênticas.</p>
+    <p>Fique atento e preserve sua segurança digital ao interagir online.</p>
+  </div>
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".card[data-modal]");
+  const modals = document.querySelectorAll(".modal");
+  const closeBtns = document.querySelectorAll(".close-btn");
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      const modalId = card.getAttribute("data-modal");
+      document.getElementById(modalId).style.display = "flex";
+    });
+  });
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.closest(".modal").style.display = "none";
+    });
+  });
+
+  window.addEventListener("click", e => {
+    if (e.target.classList.contains("modal")) {
+      e.target.style.display = "none";
+    }
+  });
+</script>
+
+</body>
+</html>

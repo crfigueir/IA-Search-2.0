@@ -1,0 +1,326 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #5f5afc, #805ad5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.container {
+  text-align: center;
+  color: white;
+  max-width: 900px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: white;
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  padding: 30px 25px;
+  width: 320px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.icon {
+  width: 50px;
+  margin-bottom: 15px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #1e40af;
+}
+/* === Estilo da tela do quiz === */
+.quiz-container {
+  background: linear-gradient(135deg, #5f5afc, #805ad5);
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quiz-header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.score {
+  background: white;
+  color: #333;
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.quiz-card {
+  background: #fff;
+  color: #333;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  padding: 20px;
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: 20px;
+}
+
+.dialogo {
+  background: #f5f6fa;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+.dialogo.voce {
+  background: #e0f0ff;
+  align-self: flex-end;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.botoes button {
+  flex: 1;
+  margin: 5px;
+  padding: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.golpe {
+  background-color: #e63946;
+}
+
+.golpe:hover {
+  background-color: #c1121f;
+}
+
+.nao-golpe {
+  background-color: #2a9d8f;
+}
+
+.nao-golpe:hover {
+  background-color: #21867a;
+}
+
+.quiz-footer {
+  margin-top: 15px;
+}
+
+#next-btn {
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#next-btn:hover {
+  background-color: #1e40af;
+}
+/* === ANIMAÇÕES SUAVES === */
+
+/* Efeito de entrada suave para o corpo da página */
+body {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Efeito para cada card do quiz */
+.quiz-card {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: slideUp 0.5s ease forwards;
+}
+
+/* Botões com leve fade */
+button {
+  transition: background 0.3s, transform 0.3s, opacity 0.5s;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+/* Definição das animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* === TELA INICIAL DO QUIZ === */
+.start-screen {
+  background: #fff;
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  padding: 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  animation: slideUp 0.6s ease forwards;
+}
+
+.start-screen h2 {
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+}
+
+.start-screen p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.start-screen input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 80%;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.start-screen button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.start-screen button:hover {
+  background-color: #1e40af;
+}
+
+/* === RANKING FINAL === */
+.ranking {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 0.95rem;
+}
+
+.ranking th, .ranking td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.ranking th {
+  background-color: #2563eb;
+  color: white;
+}
+
+.ranking tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.ranking tr:hover {
+  background-color: #e0ebff;
+}
+
+/* === BOTÃO VOLTAR === */
+.voltar {
+  margin-top: 20px;
+  background-color: #6b7280;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.voltar:hover {
+  background-color: #4b5563;
+}
+
+/* === CLASSE DE OCULTAR === */
+.hidden {
+  display: none !important;
+}

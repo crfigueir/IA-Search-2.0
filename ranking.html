@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ranking - Isto é Golpe ou Não é?</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .ranking-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ranking-list li {
+            background: #f9f9f9;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="ranking-container">
+        <h1>🏆 Ranking de Jogadores</h1>
+
+        <ul id="ranking-lista" class="ranking-list">
+            <li>Carregando Ranking...</li>
+        </ul>
+
+        <a href="quiz.html" class="btn-voltar">Voltar para o Quiz</a>
+    </div>
+
+    <script type="module" src="ranking.js"></script>
+</body>
+</html>

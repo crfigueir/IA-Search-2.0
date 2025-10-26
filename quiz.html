@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isto é Golpe ou Não é?</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Oculta o quiz antes de começar e exibe a tela inicial */
+        #quiz-main-content {
+            display: none;
+        }
+
+        #start-screen {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #nome-jogador {
+            padding: 8px;
+            margin: 10px 0;
+            width: 80%;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <header class="quiz-header">
+            <h1>🕵️‍♀️ Isto é Golpe ou Não é?</h1>
+            <p>Teste sua capacidade de identificar tentativas de fraude envolvendo IA</p>
+        </header>
+
+        <div id="start-screen">
+            <h2>Pronto(a) para começar?</h2>
+            <label for="nome-jogador">Digite seu nome ou apelido:</label><br>
+            <input type="text" id="nome-jogador" placeholder="Seu nome" required maxlength="20">
+            <button id="start-btn">Iniciar Quiz</button>
+            <p><a href="ranking.html">Ver Ranking de Pontuações</a></p>
+        </div>
+
+        <div id="quiz-main-content">
+            <div class="score">
+                Pontuação: <span id="score">0</span>/<span id="total">0</span>
+            </div>
+
+            <main id="quiz" aria-live="polite"></main>
+
+            <footer class="quiz-footer">
+                <button id="next-btn">Próximo</button>
+            </footer>
+        </div>
+
+        <div id="result-screen" style="display: none;">
+            <h2>Fim do Quiz!</h2>
+            <p id="final-message"></p>
+            <p>Sua pontuação final foi: <span id="final-score">0</span></p>
+            <button onclick="window.location.reload()">Jogar Novamente</button>
+            <button onclick="window.location.href='ranking.html'">Ver Ranking</button>
+        </div>
+
+        <div id="debug" style="max-width:700px; margin:18px auto; color:#ffefef; display:none;"></div>
+    </div>
+
+    <script type="module" src="quiz.js"></script>
+</body>
+</html>
