@@ -1,14 +1,12 @@
 // 🔹 Importa a função de salvamento do módulo Firebase
 import { salvarPontuacao } from "./firebase-module.js";
 
-// QUIZ.JS - Versão Final
+// QUIZ.JS - Versão Final + Botão Voltar
 (function () {
     'use strict';
 
-    // Variável global para armazenar o nome do jogador
     let nomeJogador = "";
 
-    // Função utilitária para mostrar debug na página
     function showDebug(msg) {
         const box = document.getElementById('debug');
         if (!box) return;
@@ -17,16 +15,13 @@ import { salvarPontuacao } from "./firebase-module.js";
         console.error('DEBUG:', msg);
     }
 
-    // Carregar quando o DOM estiver pronto
     document.addEventListener('DOMContentLoaded', () => {
         try {
-            // Seletores principais
             const quizEl = document.getElementById('quiz');
             const scoreEl = document.getElementById('score');
             const totalEl = document.getElementById('total');
             const nextBtn = document.getElementById('next-btn');
 
-            // Seletores de Tela
             const startScreen = document.getElementById('start-screen');
             const startBtn = document.getElementById('start-btn');
             const nomeInput = document.getElementById('nome-jogador');
@@ -35,13 +30,11 @@ import { salvarPontuacao } from "./firebase-module.js";
             const finalMessageEl = document.getElementById('final-message');
             const finalScoreEl = document.getElementById('final-score');
 
-            // Verificação inicial dos elementos
             if (!quizEl || !totalEl || !nextBtn || !startScreen || !startBtn || !nomeInput || !quizMainContent || !resultScreen) {
                 showDebug('ERRO FATAL: Elementos HTML obrigatórios estão ausentes ou com IDs incorretos.');
                 return;
             }
 
-            // Função para criar áudio de forma segura
             function safeAudio(src) {
                 try {
                     return new Audio(src);
@@ -55,7 +48,6 @@ import { salvarPontuacao } from "./firebase-module.js";
             const somErro = safeAudio('erro.mp3');
             const somClick = safeAudio('click.mp3');
 
-            // === Dados do quiz ===
             const quizData = [
                 {
                     id: 1,
@@ -111,7 +103,6 @@ import { salvarPontuacao } from "./firebase-module.js";
 
             if (totalEl) totalEl.textContent = quizData.length;
 
-            // === Início do Quiz ===
             startBtn.addEventListener('click', () => {
                 nomeJogador = nomeInput.value.trim();
                 if (nomeJogador === "") {
@@ -125,16 +116,13 @@ import { salvarPontuacao } from "./firebase-module.js";
                 renderPergunta();
             });
 
-            // Renderiza a pergunta atual
             function renderPergunta() {
                 respondeu = false;
                 nextBtn.disabled = true;
 
                 const pergunta = quizData[indice];
-
-                // Verificação das mensagens
                 if (!pergunta || !Array.isArray(pergunta.mensagens)) {
-                    showDebug(`ERRO DE DADOS: O array 'mensagens' para a pergunta ${indice + 1} está ausente ou não é um array.`);
+                    showDebug(`ERRO DE DADOS: O array 'mensagens' para a pergunta ${indice + 1} está ausente ou inválido.`);
                     return;
                 }
 
@@ -156,7 +144,6 @@ import { salvarPontuacao } from "./firebase-module.js";
                     </div>
                 `;
 
-                // Animação
                 const card = quizEl.querySelector('.quiz-card');
                 if (card) {
                     card.style.opacity = '0';
@@ -168,7 +155,6 @@ import { salvarPontuacao } from "./firebase-module.js";
                     }, 40);
                 }
 
-                // Handlers dos botões
                 const btnGolpe = document.getElementById('btn-golpe');
                 const btnNaoGolpe = document.getElementById('btn-nao-golpe');
 
@@ -176,16 +162,15 @@ import { salvarPontuacao } from "./firebase-module.js";
                     btnGolpe.addEventListener('click', () => handleResposta('golpe', btnGolpe, btnNaoGolpe));
                     btnNaoGolpe.addEventListener('click', () => handleResposta('nao-golpe', btnGolpe, btnNaoGolpe));
                 } else {
-                    showDebug('ERRO: Botões de resposta não encontrados após a renderização.');
+                    showDebug('ERRO: Botões de resposta não encontrados.');
                 }
             }
 
-            // Tratamento de resposta
             function handleResposta(resposta, btnA, btnB) {
                 if (respondeu) return;
                 respondeu = true;
 
-                try { somClick.play(); } catch (e) { }
+                try { somClick.play(); } catch (e) {}
 
                 btnA.disabled = true;
                 btnB.disabled = true;
@@ -194,10 +179,10 @@ import { salvarPontuacao } from "./firebase-module.js";
 
                 if (resposta === correta) {
                     pontuacao++;
-                    try { somAcerto.play(); } catch (e) { }
+                    try { somAcerto.play(); } catch (e) {}
                     alert('✅ Resposta correta!');
                 } else {
-                    try { somErro.play(); } catch (e) { }
+                    try { somErro.play(); } catch (e) {}
                     alert('❌ Resposta incorreta!');
                 }
 
@@ -205,9 +190,8 @@ import { salvarPontuacao } from "./firebase-module.js";
                 nextBtn.disabled = false;
             }
 
-            // Botão Próximo
             nextBtn.addEventListener('click', () => {
-                try { somClick.play(); } catch (e) { }
+                try { somClick.play(); } catch (e) {}
                 if (!respondeu) {
                     alert('Responda antes de avançar!');
                     return;
@@ -221,7 +205,6 @@ import { salvarPontuacao } from "./firebase-module.js";
                 }
             });
 
-            // Tela final
             function mostrarResultado() {
                 salvarPontuacao(nomeJogador, pontuacao);
 
@@ -244,8 +227,17 @@ import { salvarPontuacao } from "./firebase-module.js";
                 nextBtn.style.display = 'none';
             }
 
+            // --- 🔹 NOVO: Botão "Voltar à Tela Inicial" ---
+            const btnVoltarInicio = document.getElementById("btnVoltarInicio");
+            if (btnVoltarInicio) {
+                btnVoltarInicio.addEventListener("click", () => {
+                    window.location.href = "index.html";
+                });
+            }
+
         } catch (err) {
             showDebug('ERRO INESPERADO: ' + (err && err.message ? err.message : err));
         }
     });
 })();
+
