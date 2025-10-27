@@ -6,7 +6,6 @@
     <title>Isto é Golpe ou Não é?</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-        /* Oculta o quiz antes de começar e exibe a tela inicial */
         #quiz-main-content {
             display: none;
         }
@@ -21,6 +20,22 @@
             margin: 10px 0;
             width: 80%;
             max-width: 300px;
+        }
+
+        /* 🔹 Estilo do botão de voltar */
+        .btn-voltar-inicio {
+            background-color: #5f5afc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-voltar-inicio:hover {
+            background-color: #4a47d5;
         }
     </style>
 </head>
@@ -57,6 +72,8 @@
             <p>Sua pontuação final foi: <span id="final-score">0</span></p>
             <button onclick="window.location.reload()">Jogar Novamente</button>
             <button onclick="window.location.href='ranking.html'">Ver Ranking</button>
+            <!-- 🔹 Novo botão para voltar à tela inicial -->
+            <button class="btn-voltar-inicio" onclick="window.location.href='index.html'">Voltar à Tela Inicial</button>
         </div>
 
         <div id="debug" style="max-width:700px; margin:18px auto; color:#ffefef; display:none;"></div>
@@ -65,3 +82,4 @@
     <script type="module" src="quiz.js"></script>
 </body>
 </html>
+
